@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useCallback, useEffect, useState } from 'react';
+import { env } from '@shared/lib/env.ts';
 
 export interface Tech {
   id: number;
@@ -12,7 +13,7 @@ export const useTechnologies = () => {
 
   const fetchTechnologies = useCallback(async () => {
     try {
-      const response = await axios.get('http://212.193.26.64/api/items', {
+      const response = await axios.get(`${env.API_URL}/items`, {
         withCredentials: true,
       });
       setTechs(response.data);
