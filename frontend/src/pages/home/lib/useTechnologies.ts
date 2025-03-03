@@ -13,7 +13,7 @@ export const useTechnologies = () => {
 
   const fetchTechnologies = useCallback(async () => {
     try {
-      const response = await axios.get(`${env.API_URL}/items`, {
+      const response = await axios.get(`${env.API_URL}/users`, {
         withCredentials: true,
       });
       setTechs(response.data);
