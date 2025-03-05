@@ -13,10 +13,11 @@ export const useTechnologies = () => {
 
   const fetchTechnologies = useCallback(async () => {
     try {
-      const response = await axios.get(`${env.API_URL}/users`, {
+      const response = await axios.get(`${env.API_URL}/user/all`, {
         withCredentials: true,
       });
       setTechs(response.data);
+      console.log(response);
     } catch (error) {
       console.error('Error fetching technologies:', error);
     }
