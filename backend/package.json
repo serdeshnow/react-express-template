@@ -34,6 +34,7 @@
     "validator": "^13.12.0"
   },
   "devDependencies": {
+    "@types/mongoose": "^5.11.97",
     "eslint": "^9.21.0",
     "jsdoc": "^4.0.4",
     "nodemon": "^3.1.7",

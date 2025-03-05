@@ -1,4 +1,5 @@
 import { auth } from './middlewares/auth.middleware.js';
+import { noteRoutes } from './routes/note.routes.js';
 import { userRoutes } from './routes/user.routes.js';
 import express from 'express';
 import cookieParser from 'cookie-parser';
@@ -24,6 +25,7 @@ app.use(
 );
 
 app.use('/user', userRoutes);
+app.use('/note', noteRoutes);
 
 // Middleware ограничивает доступ к иным ресурсам пока пользователь не залогинен
-app.use(auth);
+// app.use(auth);

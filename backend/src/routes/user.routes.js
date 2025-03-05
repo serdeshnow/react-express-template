@@ -1,4 +1,9 @@
-import { loginUser, logoutUser, registerUser } from '../controllers/user.controller.js';
+import {
+  getUsersController,
+  loginUser,
+  logoutUser,
+  registerUser,
+} from '../controllers/user.controller.js';
 import { Router } from 'express';
 
 export const userRoutes = Router();
@@ -88,3 +93,5 @@ userRoutes.post('/login', loginUser);
  *         description: Ошибка сервера
  */
 userRoutes.get('/logout', logoutUser);
+
+userRoutes.get('/all', getUsersController);

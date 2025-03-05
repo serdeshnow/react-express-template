@@ -34,3 +34,13 @@ export const logoutUser = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
+
+
+export const getUsersController = async (req, res) => {
+  try {
+    const users = await userService.getUsers();
+    res.status(200).json(users);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+}

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import validator from 'validator';
 
 // /**
@@ -6,7 +6,13 @@ import validator from 'validator';
 //  * @typedef {import('mongoose').Schema} Schema
 //  * */
 
-const userSchema = mongoose.Schema(
+// /**
+//  * @typedef {import('mongoose').Schema} MongooseSchema
+//  * @typedef {import('mongoose').Model} MongooseModel
+//  */
+//
+// /** @type {MongooseSchema} */
+const userSchema = new Schema(
   {
     username: {
       type: String,

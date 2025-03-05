@@ -6,7 +6,7 @@ import validator from 'validator';
 
 /**
  * Регистрирует нового пользователя.
- * @param {Object} userData - Данные пользователя { username, email, password }
+ * @param {Object} userData - Данные пользователя {username, email, password}
  * @returns {Promise<Object>} - Зарегистрированный пользователь.
  * @throws {Error} - Если данные некорректны или пользователь уже существует.
  */
@@ -42,3 +42,7 @@ export const login = async ({ email, password }) => {
 
   return { user, token };
 };
+
+export const getUsers = async () => {
+  return await User.find();
+}
