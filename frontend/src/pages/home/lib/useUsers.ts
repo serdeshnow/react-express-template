@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { env } from '@shared/lib/env.ts';
 
@@ -11,7 +11,7 @@ export interface User {
 export const useUsers = () => {
   const [users, setUsers] = useState<User[]>();
 
-  const fetchUsers = async () => {
+  const fetchUsers = useCallback(async () => {
     try {
       const response = await axios.get(`${env.API_URL}/user/all`, {
         withCredentials: true,
@@ -22,14 +22,12 @@ export const useUsers = () => {
     } catch (e) {
       console.error('Error fetching users:', e);
     }
-  }
+  }, [])
 
   useEffect(() => {
     void fetchUsers();
 
-    const interval = setInterval(() => {
-      void fetchUsers();
-    }, 5000)
+    const interval = setInterval(fetchUsers, 5000);
 
     return () => clearInterval(interval);
   }, [fetchUsers]);
