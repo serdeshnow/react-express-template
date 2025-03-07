@@ -6,9 +6,9 @@ import chalk from 'chalk';
 const startServer = async (): Promise<void> => {
   await connectDB();
 
-  app.listen(config.port, () => {
+  app.listen(Number(config.port), config.host, () => {
     console.log(chalk.greenBright(`\nServer started on port ${config.port}`));
-    console.log(chalk.greenBright(`Docs >> http://localhost:${config.port}/api-docs`));
+    console.log(chalk.greenBright(`Docs >> http://${config.host}:${config.port}/api-docs`));
     console.log(chalk.greenBright(`To terminate process, press ctrl + C\n\r`));
   });
 };

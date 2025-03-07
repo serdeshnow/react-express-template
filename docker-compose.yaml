@@ -2,13 +2,13 @@ services:
   mongo:
     image: mongo:latest
     ports:
-      - "27027:27017"
+      - "27027:27017" # machine:docker ports
     volumes:
       - mongo_data:/data/db
     environment:
-      MONGO_INITDB_DATABASE: testdb
-      MONGO_INITDB_ROOT_USERNAME: user
-      MONGO_INITDB_ROOT_PASSWORD: mongopass
+      MONGO_INITDB_DATABASE: testdb # 1
+      MONGO_INITDB_ROOT_USERNAME: user # 2
+      MONGO_INITDB_ROOT_PASSWORD: mongopass # 3
 
   backend:
     build:
@@ -16,11 +16,11 @@ services:
     ports:
       - "8080:8080"
     environment:
-      MONGO_DATABASE: testdb
-      MONGO_USER: user
-      MONGO_PASSWORD: mongopass
+      MONGO_DATABASE: testdb # 1
+      MONGO_USER: user # 2
+      MONGO_PASSWORD: mongopass # 3
       MONGO_HOST: mongo
-      MONGO_PORT: 27017
+      MONGO_PORT: 27017 # docker port
     depends_on:
       - mongo
 
