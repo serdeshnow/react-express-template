@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 import logger from '../utils/logger.ts';
-// import { config } from './config.ts';
+import { config } from './config.ts';
 
 export const connectDB = async () => {
-  const mongoURI = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}:${process.env.MONGO_PORT}/${process.env.MONGO_DATABASE}?authSource=admin`;
+  const mongoURI = `mongodb://${config.mongoUser}:${config.mongoPass}@${config.mongoHost}:${config.mongoPort}/${config.mongoDatabase}?authSource=admin`;
 
   try {
     await mongoose.connect(mongoURI);

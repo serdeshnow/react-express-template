@@ -6,7 +6,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import StylelintPlugin from 'vite-plugin-stylelint';
 
 export default defineConfig(({mode}) => {
-  const envDir = path.resolve(__dirname, 'config');
+  const envDir = path.resolve(__dirname);
   loadEnv(mode, envDir);
 
   return {

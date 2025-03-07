@@ -29,8 +29,8 @@ src/shared/lib/env--compiled.mjs
 *.sw?
 
 # dotenv environment variable files
-#.env
-#.env*
+.env
+.env*
 !.env.example
 #!config/env/.env.example
 

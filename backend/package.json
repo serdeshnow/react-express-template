@@ -1,8 +1,12 @@
 {
   "name": "express-template",
   "version": "1.0.0",
-  "description": "This is simple NodeJS Application",
+  "description": "This is simple NodeJS Application Template",
   "type": "module",
+  "author": {
+    "name": "serdeshnow",
+    "url": "https://github.com/serdeshnow"
+  },
   "scripts": {
     "build": "tsc",
     "serve": "tsx watch src/index.ts",
@@ -16,7 +20,6 @@
     "node",
     "javascript"
   ],
-  "author": "Serdeshnow <vserdes1977@mail.ru>",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",

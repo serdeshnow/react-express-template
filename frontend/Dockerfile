@@ -1,5 +1,13 @@
 FROM node:lts-alpine as build
 
+ARG VITE_ENV
+ARG VITE_APP_NAME
+ARG VITE_API_URL
+
+ENV VITE_ENV=${VITE_ENV}
+ENV VITE_APP_NAME=${VITE_APP_NAME}
+ENV VITE_API_URL=${VITE_API_URL}
+
 WORKDIR /app
 
 RUN npm install -g pnpm@latest
