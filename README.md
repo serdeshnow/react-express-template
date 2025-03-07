@@ -1,2 +1,2 @@
 # react-express-template
-React FSD &amp; Express template
+ReactTS &amp; ExpressTS template
