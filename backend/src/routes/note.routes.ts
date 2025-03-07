@@ -1,4 +1,9 @@
-import { createNoteController, getNotesController, updateNoteController, deleteNoteController } from '../controllers/note.controller.js';
+import {
+  createNoteController,
+  getNotesController,
+  updateNoteController,
+  deleteNoteController,
+} from '../controllers/note.controller.ts';
 import { Router } from 'express';
 
 export const noteRoutes = Router();

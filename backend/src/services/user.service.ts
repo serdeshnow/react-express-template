@@ -1,16 +1,10 @@
-import { User } from '../models/user.model.js';
+import { type IUser, User } from '../models/user.model.ts';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { config } from '../config/config.js';
+import { config } from '../config/config.ts';
 import validator from 'validator';
 
-/**
- * Регистрирует нового пользователя.
- * @param {Object} userData - Данные пользователя {username, email, password}
- * @returns {Promise<Object>} - Зарегистрированный пользователь.
- * @throws {Error} - Если данные некорректны или пользователь уже существует.
- */
-export const register = async ({ username, email, password }) => {
+export const register = async ({ username, email, password }: IUser) => {
   if (!validator.isEmail(email)) {
     throw new Error('Неверный email');
   }
@@ -25,7 +19,7 @@ export const register = async ({ username, email, password }) => {
   return await User.create({ email: email, password: hashedPassword });
 };
 
-export const login = async ({ email, password }) => {
+export const login = async ({ email, password }: IUser) => {
   const user = await User.findOne({ email });
   if (!user) {
     throw new Error('Неверные учетные данные');
@@ -36,13 +30,18 @@ export const login = async ({ email, password }) => {
     throw new Error('Неверные учетные данные');
   }
 
-  const token = jwt.sign({ id: user._id }, config.jwtSecret, {
-    expiresIn: config.jwtExpiresIn,
-  });
+  // const token: string = jwt.sign(
+  //   { data: 'user.id.toString()' },
+  //   config.jwtSecret,
+  //   { expiresIn: config.jwtExpiresIn, }
+  // );
+
+  const token: string = jwt.sign(email, config.jwtSecret, {})
+
 
   return { user, token };
 };
 
 export const getUsers = async () => {
-  return await User.find();
-}
+  return User.find();
+};

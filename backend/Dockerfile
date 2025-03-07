@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:lts-alpine
 
 WORKDIR /base
 
@@ -11,3 +11,5 @@ COPY . .
 EXPOSE 8080
 
 CMD ["pnpm", "run", "start"]
+#RUN pnpm build
+#CMD ["node", "dist/index.js"]

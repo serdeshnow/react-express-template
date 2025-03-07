@@ -5,27 +5,46 @@ import ReactLogo from '@/shared/assets/svg/react.svg?react'; // ensure you use ?
 import s from './Page.module.scss';
 import { env } from '@/shared/lib/env.ts';
 import { useState } from 'react';
-import { useTechnologies } from '@pages/home';
+// import { useTechnologies } from '@pages/home';
+import { type User, useUsers } from '@pages/home/lib/useUsers.ts';
 
 export const HomePage = () => {
   const [count, setCount] = useState<number>(0);
-  const { techs } = useTechnologies();
+  // const { techs } = useTechnologies();
+  const { users } = useUsers();
 
   return (
     <>
+      {/*<>*/}
+      {/*  {techs &&*/}
+      {/*    techs.map((tech) => {*/}
+      {/*      return (*/}
+      {/*        <span style={{ padding: '0px 4px' }} key={tech.name} className="roll-out">*/}
+      {/*          <img*/}
+      {/*            src={tech.img}*/}
+      {/*            alt="logo"*/}
+      {/*            width="16"*/}
+      {/*            style={{ padding: '0px 5px' }}*/}
+      {/*          ></img>*/}
+      {/*          <span>{tech.name}</span>*/}
+      {/*        </span>*/}
+      {/*      );*/}
+      {/*    })}*/}
+      {/*</>*/}
       <>
-        {techs &&
-          techs.map((tech) => {
+        {users &&
+          users.map((user: User) => {
             return (
-              <span style={{ padding: '0px 4px' }} key={tech.name} className="roll-out">
-                <img
-                  src={tech.img}
-                  alt="logo"
-                  width="16"
-                  style={{ padding: '0px 5px' }}
-                ></img>
-                <span>{tech.name}</span>
-              </span>
+              <div style={{ padding: '0px 4px' }} key={user.email} className="roll-out">
+
+                <span>Name: {user.username}</span>
+                <br/>
+                <span>Mail: {user.email}</span>
+                <br/>
+                <span>Password: {user.password}</span>
+                <br/>
+
+              </div>
             );
           })}
       </>

@@ -16,11 +16,11 @@ const options = {
       },
     ],
   },
-  apis: ['./src/routes/user.routes.js'], // Укажите путь к вашим файлам с роутами
+  apis: ['./src/routes/user.routes.ts'], // Укажите путь к вашим файлам с роутами
 };
 
 const swaggerSpec = swaggerJSDoc(options);
 
-export default (app) => {
+export default (app: any) => {
   app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 };

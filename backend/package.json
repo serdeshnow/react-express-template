@@ -1,14 +1,15 @@
 {
-  "name": "note-app",
+  "name": "express-template",
   "version": "1.0.0",
   "description": "This is simple NodeJS Application",
-  "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js",
-    "serve": "nodemon src/index.js",
+    "build": "tsc",
+    "serve": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
     "lint": "eslint src",
     "format": "prettier --write src",
+    "format:types": "tsc",
     "docs": "jsdoc src -r -d docs"
   },
   "keywords": [
@@ -24,7 +25,6 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "globals": "^16.0.0",
     "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.11.0",
@@ -34,11 +34,22 @@
     "validator": "^13.12.0"
   },
   "devDependencies": {
-    "@types/mongoose": "^5.11.97",
+    "@types/bcrypt": "^5.0.2",
+    "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.13.9",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
+    "@types/validator": "^13.12.2",
     "eslint": "^9.21.0",
+    "globals": "^16.0.0",
     "jsdoc": "^4.0.4",
-    "nodemon": "^3.1.7",
-    "prettier": "^3.5.2"
+    "prettier": "^3.5.2",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
   },
   "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
 }

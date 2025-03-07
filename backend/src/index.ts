@@ -1,9 +1,9 @@
-import { app } from './app.js';
+import { app } from './app.ts';
 import { connectDB } from './config/db.js';
-import { config } from './config/config.js';
+import { config } from './config/config.ts';
 import chalk from 'chalk';
 
-const startServer = async () => {
+const startServer = async (): Promise<void> => {
   await connectDB();
 
   app.listen(config.port, () => {

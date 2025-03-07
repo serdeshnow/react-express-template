@@ -1,17 +1,12 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema, Document, Model, InferSchemaType } from 'mongoose';
 import validator from 'validator';
 
-// /**
-//  * TS style:
-//  * @typedef {import('mongoose').Schema} Schema
-//  * */
+// export interface IUser extends Document {
+//   username: string;
+//   email: string;
+//   password: string;
+// }
 
-// /**
-//  * @typedef {import('mongoose').Schema} MongooseSchema
-//  * @typedef {import('mongoose').Model} MongooseModel
-//  */
-//
-// /** @type {MongooseSchema} */
 const userSchema = new Schema(
   {
     username: {
@@ -25,7 +20,7 @@ const userSchema = new Schema(
       unique: true,
       lowercase: true,
       validate: {
-        validator: validator.isEmail,
+        validator: (value: string) => validator.isEmail(value),
         message: 'Invalid email',
       },
     },
@@ -37,4 +32,6 @@ const userSchema = new Schema(
   { timestamps: true },
 );
 
-export const User = mongoose.model('User', userSchema);
+export type IUser = InferSchemaType<typeof userSchema> & Document;
+
+export const User: Model<IUser> = mongoose.model<IUser>('User', userSchema);

@@ -1,14 +1,14 @@
-import { auth } from './middlewares/auth.middleware.js';
 import { noteRoutes } from './routes/note.routes.js';
-import { userRoutes } from './routes/user.routes.js';
-import express from 'express';
+import { userRoutes } from './routes/user.routes.ts';
+import express, { type Application } from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import swaggerConfig from './config/swagger.js';
+// import { auth } from './middlewares/auth.middleware.ts';
 
-export const app = express();
+export const app: Application = express();
 swaggerConfig(app);
 
 // // Middlewares
